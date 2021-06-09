@@ -5,6 +5,8 @@
 </template>
 
 <script>
+import "./assets/css/reset.css";
+import "./assets/css/common.css";
 export default {
   name: "App",
 };

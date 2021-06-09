@@ -1,0 +1,11 @@
+a,
+a:hover,
+a:focus,
+a:visited {
+  color: #eee;
+  text-decoration: none;
+}
+.container {
+  width: 1080px;
+  margin: 0 auto;
+}
