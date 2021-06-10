@@ -1,20 +1,20 @@
 <template>
   <div>
-    NewsView
+    <h2>
+      NewsView
+    </h2>
+    <p>{{ this.fetchedNews }}</p>
   </div>
 </template>
 
 <script>
-import { fetchNewsList } from "../api/index.js";
+import { mapGetters } from "vuex";
 export default {
+  computed: {
+    ...mapGetters(["fetchedNews"]),
+  },
   created() {
-    fetchNewsList()
-      .then(({ data }) => {
-        console.log(data);
-      })
-      .catch((err) => {
-        console.log(err);
-      });
+    this.$store.dispatch("FETCH_NEWS");
   },
 };
 </script>

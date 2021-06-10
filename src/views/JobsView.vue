@@ -1,20 +1,20 @@
 <template>
   <div>
-    JobsView
+    <h2>
+      JobsView
+    </h2>
+    <p>{{ this.fetchedJobs }}</p>
   </div>
 </template>
 
 <script>
-import { fetchJobsList } from "../api/index.js";
+import { mapGetters } from "vuex";
 export default {
+  computed: {
+    ...mapGetters(["fetchedJobs"]),
+  },
   created() {
-    fetchJobsList()
-      .then(({ data }) => {
-        console.log(data);
-      })
-      .catch((err) => {
-        console.log(err);
-      });
+    this.$store.dispatch("FETCH_JOBS");
   },
 };
 </script>
