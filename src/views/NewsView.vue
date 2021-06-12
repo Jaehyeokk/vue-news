@@ -10,9 +10,9 @@
             {{ item.title }}
           </a>
           <span class="time">{{ item.time_ago }}</span>
-          <a class="user-name" href="">
+          <router-link class="user-name" :to="`/user/${item.user}`">
             {{ item.user }}
-          </a>
+          </router-link>
         </li>
       </ul>
     </div>

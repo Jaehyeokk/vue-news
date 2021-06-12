@@ -30,7 +30,7 @@ export default {};
 .container {
   display: flex;
   align-content: center;
-  padding: 10px 20px;
+  padding: 10px 0;
 }
 
 .title a {

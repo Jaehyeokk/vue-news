@@ -6,13 +6,13 @@
       </h2>
       <ul class="hacker-list">
         <li v-for="item in fetchedAsk" :key="item.id" class="hacker-list-item">
-          <a class="title" :href="item.url" target="_blank">
+          <router-link :to="`/item/${item.id}`" class="title">
             {{ item.title }}
-          </a>
+          </router-link>
           <span class="time">{{ item.time_ago }}</span>
-          <a class="user-name" href="">
+          <router-link class="user-name" :to="`/user/${item.user}`">
             {{ item.user }}
-          </a>
+          </router-link>
         </li>
       </ul>
     </div>
