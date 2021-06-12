@@ -68,6 +68,7 @@ export default {};
   display: inline-block;
   padding: 5px 15px;
   font-size: 14px;
+  color: #eee;
 }
 
 .menu-item a:hover,

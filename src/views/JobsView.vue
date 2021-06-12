@@ -1,9 +1,21 @@
 <template>
   <div>
-    <h2>
-      JobsView
-    </h2>
-    <p>{{ this.fetchedJobs }}</p>
+    <div class="container">
+      <h2 class="view-title">
+        Jobs
+      </h2>
+      <ul class="hacker-list">
+        <li v-for="item in fetchedJobs" :key="item.id" class="hacker-list-item">
+          <a class="title" :href="item.url" target="_blank">
+            {{ item.title }}
+          </a>
+          <span class="time">{{ item.time_ago }}</span>
+          <span class="user-name">
+            {{ item.domain }}
+          </span>
+        </li>
+      </ul>
+    </div>
   </div>
 </template>
 
@@ -19,4 +31,4 @@ export default {
 };
 </script>
 
-<style></style>
+<style scoped src="../assets/css/list-view.css"></style>

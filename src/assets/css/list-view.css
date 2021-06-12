@@ -1,0 +1,25 @@
+.view-title {
+  padding: 20px;
+  font-weight: 700;
+  font-size: 24px;
+  color: #222;
+  border-bottom: 2px solid #f1e6c2;
+}
+.hacker-list-item {
+  padding: 10px;
+  border-bottom: 1px solid #eee;
+}
+
+.hacker-list-item .title {
+  font-size: 16px;
+  color: #222;
+}
+.hacker-list-item .time {
+  padding-left: 10px;
+  font-size: 10px;
+}
+.hacker-list-item .user-name {
+  padding-left: 10px;
+  font-size: 12px;
+  color: #222;
+}
