@@ -20,6 +20,9 @@ export default {
 </script>
 
 <style>
+#app {
+  background-color: #fafafa;
+}
 .fade-enter-active,
 .fade-leave-active {
   transition: opacity 0.5s;
