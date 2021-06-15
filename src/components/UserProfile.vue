@@ -44,4 +44,12 @@ export default {};
   font-size: 14px;
   line-height: 1.3;
 }
+
+.user-info-text a {
+  color: #222;
+}
+.user-info-text a:hover {
+  color: #f0b90b;
+  text-decoration: underline;
+}
 </style>
