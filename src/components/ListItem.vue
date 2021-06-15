@@ -34,6 +34,7 @@
 </template>
 
 <script>
+import bus from "../utils/bus.js";
 export default {
   computed: {
     c_fetched_item() {
@@ -50,6 +51,7 @@ export default {
     },
   },
   created() {
+    bus.$emit("start:spinner");
     const name = this.$route.name;
     let action = "";
     if (name === "news") {
@@ -59,7 +61,14 @@ export default {
     } else if (name === "ask") {
       action = "FETCH_ASK";
     }
-    this.$store.dispatch(action);
+    this.$store
+      .dispatch(action)
+      .then(() => {
+        bus.$emit("stop:spinner");
+      })
+      .catch((err) => {
+        console.log(err);
+      });
   },
 };
 </script>

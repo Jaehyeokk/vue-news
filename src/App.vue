@@ -1,9 +1,8 @@
 <template>
   <div id="app">
     <AppHeader></AppHeader>
-    <transition name="fade">
-      <router-view :class="`hacker-${this.$route.name}`"></router-view>
-    </transition>
+    <router-view :class="`hacker-${this.$route.name}`"></router-view>
+    <Spinner :loading="loading"></Spinner>
   </div>
 </template>
 
@@ -11,10 +10,35 @@
 import "./assets/css/reset.css";
 import "./assets/css/common.css";
 import AppHeader from "./components/AppHeader.vue";
+import Spinner from "./components/Spinner.vue";
+import bus from "./utils/bus.js";
+
 export default {
   name: "App",
   components: {
     AppHeader,
+    Spinner,
+  },
+  data() {
+    return {
+      loading: false,
+    };
+  },
+  methods: {
+    startSpinner() {
+      this.loading = true;
+    },
+    endSpinner() {
+      this.loading = false;
+    },
+  },
+  created() {
+    bus.$on("start:spinner", this.startSpinner);
+    bus.$on("stop:spinner", this.endSpinner);
+  },
+  beforeDestroy() {
+    bus.$off("start:spinner", this.startSpinner);
+    bus.$off("stop:spinner", this.endSpinner);
   },
 };
 </script>
@@ -22,12 +46,5 @@ export default {
 <style>
 #app {
   background-color: #fafafa;
-}
-.fade-enter-active,
-.fade-leave-active {
-  transition: opacity 0.5s;
-}
-.fade-enter, .fade-leave-to /* .fade-leave-active below version 2.1.8 */ {
-  opacity: 0;
 }
 </style>
