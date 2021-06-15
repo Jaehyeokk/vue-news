@@ -1,49 +1,41 @@
 <template>
   <div>
-    <div class="container">
-      <h2 class="view-title">
-        {{ c_view_title }}
-      </h2>
-      <ul class="hacker-list">
-        <li
-          v-for="item in c_fetched_item"
-          :key="item.id"
-          class="hacker-list-item"
-        >
-          <span class="point">{{ item.points || 0 }}</span>
-          <template v-if="item.domain">
-            <a class="title" :href="item.url" target="_blank">
-              {{ item.title }}
-            </a>
-          </template>
-          <template v-else>
-            <router-link :to="`/item/${item.id}`" class="title">
-              {{ item.title }}
-            </router-link>
-          </template>
-          <span class="time">{{ item.time_ago }}</span>
-          <router-link
-            v-if="item.user"
-            class="user-name"
-            :to="`/user/${item.user}`"
-          >
-            by {{ item.user }}
-          </router-link>
-          <a v-else class="user-name" :href="item.url" target="_blank">
-            {{ item.domain }}
+    <ul class="hacker-list">
+      <li
+        v-for="item in c_fetched_item"
+        :key="item.id"
+        class="hacker-list-item"
+      >
+        <span class="point">{{ item.points || 0 }}</span>
+        <template v-if="item.domain">
+          <a class="title" :href="item.url" target="_blank">
+            {{ item.title }}
           </a>
-        </li>
-      </ul>
-    </div>
+        </template>
+        <template v-else>
+          <router-link :to="`/item/${item.id}`" class="title">
+            {{ item.title }}
+          </router-link>
+        </template>
+        <span class="time">{{ item.time_ago }}</span>
+        <router-link
+          v-if="item.user"
+          class="user-name"
+          :to="`/user/${item.user}`"
+        >
+          by {{ item.user }}
+        </router-link>
+        <a v-else class="user-name" :href="item.url" target="_blank">
+          {{ item.domain }}
+        </a>
+      </li>
+    </ul>
   </div>
 </template>
 
 <script>
 export default {
   computed: {
-    c_view_title() {
-      return this.$route.name.toUpperCase();
-    },
     c_fetched_item() {
       const name = this.$route.name;
       if (name === "news") {

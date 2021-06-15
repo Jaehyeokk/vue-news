@@ -1,5 +1,8 @@
 <template>
-  <div>
+  <div class="container">
+    <h2 class="view-title">
+      Jobs
+    </h2>
     <ListItem></ListItem>
   </div>
 </template>

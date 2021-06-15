@@ -1,5 +1,8 @@
 <template>
-  <div>
+  <div class="container">
+    <h2 class="view-title">
+      Ask
+    </h2>
     <ListItem></ListItem>
   </div>
 </template>
