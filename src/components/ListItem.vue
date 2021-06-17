@@ -34,41 +34,11 @@
 </template>
 
 <script>
-import bus from "../utils/bus.js";
 export default {
   computed: {
     c_fetched_item() {
-      const name = this.$route.name;
-      if (name === "news") {
-        return this.$store.state.news;
-      } else if (name === "jobs") {
-        return this.$store.state.jobs;
-      } else if (name === "ask") {
-        return this.$store.state.ask;
-      } else {
-        return null;
-      }
+      return this.$store.state.list;
     },
-  },
-  created() {
-    bus.$emit("start:spinner");
-    const name = this.$route.name;
-    let action = "";
-    if (name === "news") {
-      action = "FETCH_NEWS";
-    } else if (name === "jobs") {
-      action = "FETCH_JOBS";
-    } else if (name === "ask") {
-      action = "FETCH_ASK";
-    }
-    this.$store
-      .dispatch(action)
-      .then(() => {
-        bus.$emit("stop:spinner");
-      })
-      .catch((err) => {
-        console.log(err);
-      });
   },
 };
 </script>

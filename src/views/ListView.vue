@@ -1,8 +1,5 @@
 <template>
-  <div class="container">
-    <h2 class="view-title">
-      News
-    </h2>
+  <div>
     <ListItem></ListItem>
   </div>
 </template>
