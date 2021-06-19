@@ -2,7 +2,7 @@ import { fetchList, fetchUserInfo, fetchAskItem } from "../api/index";
 
 export default {
   FETCH_LIST_ITEM({ commit }, name) {
-    fetchList(name)
+    return fetchList(name)
       .then(({ data }) => {
         commit("SET_LIST_ITEM", data);
       })
@@ -11,7 +11,7 @@ export default {
       });
   },
   FETCH_USER({ commit }, username) {
-    fetchUserInfo(username)
+    return fetchUserInfo(username)
       .then(({ data }) => {
         commit("SET_USER", data);
       })
@@ -20,7 +20,7 @@ export default {
       });
   },
   FETCH_ASK_ITEM({ commit }, id) {
-    fetchAskItem(id)
+    return fetchAskItem(id)
       .then(({ data }) => {
         commit("SET_ASK_ITEM", data);
       })
