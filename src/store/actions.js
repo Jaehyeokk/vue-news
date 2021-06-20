@@ -1,31 +1,31 @@
 import { fetchList, fetchUserInfo, fetchAskItem } from "../api/index";
 
 export default {
-  FETCH_LIST_ITEM({ commit }, name) {
-    return fetchList(name)
-      .then(({ data }) => {
-        commit("SET_LIST_ITEM", data);
-      })
-      .catch((err) => {
-        console.log(err);
-      });
+  async FETCH_LIST_ITEM({ commit }, name) {
+    try {
+      const response = await fetchList(name);
+      commit("SET_LIST_ITEM", response.data);
+      return response;
+    } catch (error) {
+      console.log(error);
+    }
   },
-  FETCH_USER({ commit }, username) {
-    return fetchUserInfo(username)
-      .then(({ data }) => {
-        commit("SET_USER", data);
-      })
-      .catch((err) => {
-        console.log(err);
-      });
+  async FETCH_USER({ commit }, username) {
+    try {
+      const response = await fetchUserInfo(username);
+      commit("SET_USER", response.data);
+      return response;
+    } catch (error) {
+      console.log(error);
+    }
   },
-  FETCH_ASK_ITEM({ commit }, id) {
-    return fetchAskItem(id)
-      .then(({ data }) => {
-        commit("SET_ASK_ITEM", data);
-      })
-      .catch((err) => {
-        console.log(err);
-      });
+  async FETCH_ASK_ITEM({ commit }, id) {
+    try {
+      const response = await fetchAskItem(id);
+      commit("SET_ASK_ITEM", response.data);
+      return response;
+    } catch (error) {
+      console.log(error);
+    }
   },
 };
