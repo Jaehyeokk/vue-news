@@ -2,7 +2,7 @@
   <div class="app-header">
     <div class="container">
       <h1 class="title">
-        <a href="/">HACKER NEWS</a>
+        <router-link to="/">HACKER NEWS</router-link>
       </h1>
       <ul class="menu-list">
         <li :class="'menu-item'">
