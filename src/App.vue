@@ -1,50 +1,28 @@
 <template>
   <div id="app">
-    <AppHeader></AppHeader>
-    <router-view :class="`hacker-${this.$route.name}`"></router-view>
-    <Spinner :loading="loading"></Spinner>
+    <img alt="Vue logo" src="./assets/logo.png">
+    <HelloWorld msg="Welcome to Your Vue.js App"/>
   </div>
 </template>
 
 <script>
-import "./assets/css/reset.css";
-import "./assets/css/common.css";
-import AppHeader from "./components/AppHeader.vue";
-import Spinner from "./components/Spinner.vue";
-import bus from "./utils/bus.js";
+import HelloWorld from './components/HelloWorld.vue'
 
 export default {
-  name: "App",
+  name: 'App',
   components: {
-    AppHeader,
-    Spinner,
-  },
-  data() {
-    return {
-      loading: false,
-    };
-  },
-  methods: {
-    startSpinner() {
-      this.loading = true;
-    },
-    endSpinner() {
-      this.loading = false;
-    },
-  },
-  created() {
-    bus.$on("start:spinner", this.startSpinner);
-    bus.$on("stop:spinner", this.endSpinner);
-  },
-  beforeDestroy() {
-    bus.$off("start:spinner", this.startSpinner);
-    bus.$off("stop:spinner", this.endSpinner);
-  },
-};
+    HelloWorld
+  }
+}
 </script>
 
 <style>
 #app {
-  background-color: #fafafa;
+  font-family: Avenir, Helvetica, Arial, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-align: center;
+  color: #2c3e50;
+  margin-top: 60px;
 }
 </style>
