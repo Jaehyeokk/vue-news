@@ -25,15 +25,48 @@
           </li>
         </ul>
       </nav>
-      <button class="mobile-menu-btn">
+      <button class="mobile-menu-btn" @click="openMobileNav">
         <i class="fas fa-bars"></i>
       </button>
+    </div>
+    <div v-if="mobile_nav" class="mobile-menu">
+      <button class="mobile-close-btn" @click="openMobileNav">
+        <i class="fas fa-times"></i>
+      </button>
+      <ul class="mobile-menu-list">
+        <li class="mobile-menu-item">
+          <router-link to="/news">
+            News
+          </router-link>
+        </li>
+        <li class="mobile-menu-item">
+          <router-link to="/jobs">
+            Jobs
+          </router-link>
+        </li>
+        <li class="mobile-menu-item">
+          <router-link to="/ask">
+            Ask
+          </router-link>
+        </li>
+      </ul>
     </div>
   </div>
 </template>
 
 <script>
-export default {};
+export default {
+  data() {
+    return {
+      mobile_nav: false,
+    };
+  },
+  methods: {
+    openMobileNav() {
+      this.mobile_nav = !this.mobile_nav;
+    },
+  },
+};
 </script>
 
 <style scoped>
@@ -56,6 +89,8 @@ export default {};
   color: #f0b90b;
   text-decoration: none;
 }
+
+/* desktop-menu */
 .main-menu-list {
   display: flex;
 }
@@ -70,6 +105,7 @@ export default {};
   color: #f0b90b;
 }
 
+/* mobile-menu */
 .mobile-menu-btn {
   display: none;
   padding: 10px;
@@ -78,6 +114,42 @@ export default {};
   color: #fff;
   background-color: transparent;
   cursor: pointer;
+}
+
+.mobile-menu {
+  position: fixed;
+  top: 0;
+  right: 0;
+  width: 300px;
+  height: 100vh;
+  background-color: #333;
+}
+
+.mobile-close-btn {
+  position: absolute;
+  right: 20px;
+  top: 8px;
+  padding: 10px;
+  border: none;
+  font-size: 22px;
+  color: #fff;
+  background-color: transparent;
+  cursor: pointer;
+}
+
+.mobile-menu-list {
+  padding: 60px 20px 20px;
+}
+
+.mobile-menu-item a {
+  display: inline-block;
+  padding: 10px;
+  color: #fff;
+  text-decoration: none;
+}
+
+.mobile-menu-item .router-link-active {
+  color: #f0b90b;
 }
 
 @media screen and (max-width: 480px) {
@@ -91,6 +163,10 @@ export default {};
 
   .mobile-menu-btn {
     display: block;
+  }
+
+  .mobile-menu {
+    transform: translateX(0);
   }
 }
 </style>
