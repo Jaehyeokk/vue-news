@@ -2,9 +2,9 @@
   <div class="news-header">
     <div class="container">
       <h1 class="logo">
-        <a href="/">
+        <router-link to="/">
           Hacker News
-        </a>
+        </router-link>
       </h1>
       <nav class="main-menu">
         <ul class="main-menu-list">
