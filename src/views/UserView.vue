@@ -17,18 +17,13 @@
 </template>
 
 <script>
-import axios from "axios";
+import { mapState } from "vuex";
 export default {
-  data() {
-    return {
-      user_info: "",
-    };
+  computed: {
+    ...mapState(["user_info"]),
   },
   created() {
-    axios
-      .get(`https://api.hnpwa.com/v0/user/${this.$route.params.id}.json`)
-      .then(({ data }) => (this.user_info = data))
-      .catch((e) => console.log(e));
+    this.$store.dispatch("FETCH_USER_INFO", this.$route.params.id);
   },
 };
 </script>

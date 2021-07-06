@@ -19,18 +19,13 @@
 </template>
 
 <script>
-import axios from "axios";
+import { mapState } from "vuex";
 export default {
-  data() {
-    return {
-      news_list: "",
-    };
+  computed: {
+    ...mapState(["news_list"]),
   },
   created() {
-    axios
-      .get("https://api.hnpwa.com/v0/news/1.json")
-      .then(({ data }) => (this.news_list = data))
-      .catch((e) => console.log(e));
+    this.$store.dispatch("FETCH_NEWS_LIST");
   },
 };
 </script>

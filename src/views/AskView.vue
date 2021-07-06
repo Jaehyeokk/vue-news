@@ -15,18 +15,13 @@
 </template>
 
 <script>
-import axios from "axios";
+import { mapState } from "vuex";
 export default {
-  data() {
-    return {
-      ask_list: "",
-    };
+  computed: {
+    ...mapState(["ask_list"]),
   },
   created() {
-    axios
-      .get("https://api.hnpwa.com/v0/ask/1.json")
-      .then(({ data }) => (this.ask_list = data))
-      .catch((e) => console.log(e));
+    this.$store.dispatch("FETCH_ASK_LIST");
   },
 };
 </script>

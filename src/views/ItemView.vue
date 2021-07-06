@@ -1,32 +1,27 @@
 <template>
   <div class="item-view">
     <div class="container">
-      <p class="title">{{ this.item_info.title }}</p>
+      <p class="title">{{ this.ask_item.title }}</p>
       <p class="user-info">
-        <router-link :to="`/user/${item_info.user}`">{{
-          this.item_info.user
+        <router-link :to="`/user/${ask_item.user}`">{{
+          this.ask_item.user
         }}</router-link>
-        <span>{{ this.item_info.time_ago }}</span>
-        <span>{{ this.item_info.points }}p</span>
+        <span>{{ this.ask_item.time_ago }}</span>
+        <span>{{ this.ask_item.points }}p</span>
       </p>
-      <div class="contents" v-html="item_info.content"></div>
+      <div class="contents" v-html="ask_item.content"></div>
     </div>
   </div>
 </template>
 
 <script>
-import axios from "axios";
+import { mapState } from "vuex";
 export default {
-  data() {
-    return {
-      item_info: "",
-    };
+  computed: {
+    ...mapState(["ask_item"]),
   },
   created() {
-    axios
-      .get(`https://api.hnpwa.com/v0/item/${this.$route.params.id}.json`)
-      .then(({ data }) => (this.item_info = data))
-      .catch((e) => console.log(e));
+    this.$store.dispatch("FETCH_ASK_ITEM", this.$route.params.id);
   },
 };
 </script>

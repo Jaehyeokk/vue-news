@@ -19,18 +19,13 @@
 </template>
 
 <script>
-import axios from "axios";
+import { mapState } from "vuex";
 export default {
-  data() {
-    return {
-      jobs_list: "",
-    };
+  computed: {
+    ...mapState(["jobs_list"]),
   },
   created() {
-    axios
-      .get("https://api.hnpwa.com/v0/jobs/1.json")
-      .then(({ data }) => (this.jobs_list = data))
-      .catch((e) => console.log(e));
+    this.$store.dispatch("FETCH_JOBS_LIST");
   },
 };
 </script>
