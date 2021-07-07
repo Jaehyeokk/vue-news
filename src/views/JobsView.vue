@@ -2,11 +2,7 @@
   <div class="news-page">
     <div class="container">
       <ul class="hacker-list">
-        <li
-          v-for="item in jobs_list"
-          :key="item.title"
-          class="hacker-list-item"
-        >
+        <li v-for="item in list" :key="item.title" class="hacker-list-item">
           <a :href="item.url" target="_blank">{{ item.title }}</a>
           <span class="time">{{ item.time_ago }}</span>
           <a class="domain" :href="item.url" target="_blank"
@@ -22,10 +18,10 @@
 import { mapState } from "vuex";
 export default {
   computed: {
-    ...mapState(["jobs_list"]),
+    ...mapState(["list"]),
   },
   created() {
-    this.$store.dispatch("FETCH_JOBS_LIST");
+    this.$store.dispatch("FETCH_LIST", this.$route.name);
   },
 };
 </script>

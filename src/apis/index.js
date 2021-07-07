@@ -2,23 +2,9 @@ import axios from "axios";
 
 const baseURL = "https://api.hnpwa.com/v0";
 
-async function fetchNewsList() {
+async function fetchList(name) {
   try {
-    return await axios.get(`${baseURL}/news/1.json`);
-  } catch (error) {
-    console.log(error);
-  }
-}
-async function fetchJobsList() {
-  try {
-    return await axios.get(`${baseURL}/jobs/1.json`);
-  } catch (error) {
-    console.log(error);
-  }
-}
-async function fetchAskList() {
-  try {
-    return await axios.get(`${baseURL}/ask/1.json`);
+    return await axios.get(`${baseURL}/${name}/1.json`);
   } catch (error) {
     console.log(error);
   }
@@ -38,10 +24,4 @@ async function fetchAskItem(id) {
   }
 }
 
-export {
-  fetchNewsList,
-  fetchJobsList,
-  fetchAskList,
-  fetchUserInfo,
-  fetchAskItem,
-};
+export { fetchList, fetchUserInfo, fetchAskItem };

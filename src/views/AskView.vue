@@ -2,7 +2,7 @@
   <div class="news-page">
     <div class="container">
       <ul class="hacker-list">
-        <li v-for="item in ask_list" :key="item.title" class="hacker-list-item">
+        <li v-for="item in list" :key="item.title" class="hacker-list-item">
           <router-link :to="`/ask/${item.id}`">{{ item.title }}</router-link>
           <router-link :to="`/user/${item.user}`" class="user-name"
             >by {{ item.user }}</router-link
@@ -18,10 +18,10 @@
 import { mapState } from "vuex";
 export default {
   computed: {
-    ...mapState(["ask_list"]),
+    ...mapState(["list"]),
   },
   created() {
-    this.$store.dispatch("FETCH_ASK_LIST");
+    this.$store.dispatch("FETCH_LIST", this.$route.name);
   },
 };
 </script>

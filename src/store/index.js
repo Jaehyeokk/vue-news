@@ -1,32 +1,18 @@
 import Vue from "vue";
 import Vuex from "vuex";
-import {
-  fetchAskItem,
-  fetchAskList,
-  fetchJobsList,
-  fetchNewsList,
-  fetchUserInfo,
-} from "../apis/index.js";
+import { fetchAskItem, fetchList, fetchUserInfo } from "../apis/index.js";
 
 Vue.use(Vuex);
 
 export const store = new Vuex.Store({
   state: {
-    news_list: "",
-    jobs_list: "",
-    ask_list: "",
+    list: "",
     user_info: "",
     ask_item: "",
   },
   mutations: {
-    SET_NEWS_LIST(state, data) {
-      state.news_list = data;
-    },
-    SET_JOBS_LIST(state, data) {
-      state.jobs_list = data;
-    },
-    SET_ASK_LIST(state, data) {
-      state.ask_list = data;
+    SET_LIST(state, data) {
+      state.list = data;
     },
     SET_USER_INFO(state, data) {
       state.user_info = data;
@@ -36,28 +22,10 @@ export const store = new Vuex.Store({
     },
   },
   actions: {
-    async FETCH_NEWS_LIST({ commit }) {
+    async FETCH_LIST({ commit }, name) {
       try {
-        const res = await fetchNewsList();
-        commit("SET_NEWS_LIST", res.data);
-        return res;
-      } catch (error) {
-        console.log(error);
-      }
-    },
-    async FETCH_JOBS_LIST({ commit }) {
-      try {
-        const res = await fetchJobsList();
-        commit("SET_JOBS_LIST", res.data);
-        return res;
-      } catch (error) {
-        console.log(error);
-      }
-    },
-    async FETCH_ASK_LIST({ commit }) {
-      try {
-        const res = await fetchAskList();
-        commit("SET_ASK_LIST", res.data);
+        const res = await fetchList(name);
+        commit("SET_LIST", res.data);
         return res;
       } catch (error) {
         console.log(error);
