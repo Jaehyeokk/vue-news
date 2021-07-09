@@ -1,16 +1,14 @@
 <template>
   <div class="user-page">
     <div class="container">
-      <div class="user-info-wrap">
-        <div class="user-avatar"><i class="fas fa-user"></i></div>
-        <div class="user-info">
-          <p>
-            ID: <span class="user-name">{{ this.user_info.id }}</span>
-          </p>
-          <p class="user-karma">Karma: {{ this.user_info.karma }}</p>
-          <p class="user-created">Created: {{ this.user_info.created }}</p>
-        </div>
-      </div>
+      <UserProfile>
+        <template slot="avatar"><i class="fas fa-user"></i></template>
+        <template slot="name">ID: {{ this.user_info.id }}</template>
+        <template slot="karma">Karma: {{ this.user_info.karma }}</template>
+        <template slot="created"
+          >Created: {{ this.user_info.created }}</template
+        >
+      </UserProfile>
       <div class="user-dec" v-html="user_info.about"></div>
     </div>
   </div>
@@ -18,7 +16,11 @@
 
 <script>
 import { mapState } from "vuex";
+import UserProfile from "../components/UserProfile.vue";
 export default {
+  components: {
+    UserProfile,
+  },
   computed: {
     ...mapState(["user_info"]),
   },
@@ -33,24 +35,6 @@ export default {
   width: 1080px;
   padding: 20px;
   box-sizing: border-box;
-}
-
-.user-info-wrap {
-  display: flex;
-}
-
-.user-avatar {
-  font-size: 52px;
-  margin-right: 20px;
-}
-
-.user-info p {
-  font-size: 14px;
-  line-height: 1.3;
-}
-
-.user-name {
-  font-weight: 700;
 }
 
 .user-dec {

@@ -3,10 +3,22 @@
     <div class="container">
       <ul class="hacker-list">
         <li v-for="item in list" :key="item.title" class="hacker-list-item">
-          <a :href="item.url" target="_blank">{{ item.title }}</a>
-          <router-link :to="`/user/${item.user}`" class="user-name"
-            >by {{ item.user }}</router-link
-          >
+          <template v-if="item.domain">
+            <a :href="item.url" target="_blank">{{ item.title }}</a>
+          </template>
+          <template v-else>
+            <router-link :to="`/ask/${item.id}`"> {{ item.title }}</router-link>
+          </template>
+          <template v-if="item.user">
+            <router-link :to="`/user/${item.user}`" class="user-name"
+              >by {{ item.user }}</router-link
+            >
+          </template>
+          <template v-else>
+            <a class="time" :href="item.url" target="_blank">{{
+              item.domain
+            }}</a>
+          </template>
           <span class="time">{{ item.time_ago }}</span>
         </li>
       </ul>

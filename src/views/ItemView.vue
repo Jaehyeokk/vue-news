@@ -2,21 +2,33 @@
   <div class="item-view">
     <div class="container">
       <p class="title">{{ this.ask_item.title }}</p>
-      <p class="user-info">
-        <router-link :to="`/user/${ask_item.user}`">{{
-          this.ask_item.user
-        }}</router-link>
-        <span>{{ this.ask_item.time_ago }}</span>
-        <span>{{ this.ask_item.points }}p</span>
-      </p>
+      <UserProfile>
+        <template slot="avatar">
+          <i class="fas fa-user"></i>
+        </template>
+        <template slot="name"
+          >ID:
+          <router-link :to="`/user/${ask_item.user}`">{{
+            this.ask_item.user
+          }}</router-link>
+        </template>
+        <template slot="karma">point: {{ this.ask_item.points }}p </template>
+        <template slot="created">
+          {{ this.ask_item.time_ago }}
+        </template>
+      </UserProfile>
       <div class="contents" v-html="ask_item.content"></div>
     </div>
   </div>
 </template>
 
 <script>
+import UserProfile from "../components/UserProfile.vue";
 import { mapState } from "vuex";
 export default {
+  components: {
+    UserProfile,
+  },
   computed: {
     ...mapState(["ask_item"]),
   },
@@ -38,21 +50,12 @@ export default {
   font-weight: 600;
 }
 
-.user-info {
-  padding-bottom: 10px;
-  border-bottom: 1px solid #eee;
-}
-
-.user-info span {
-  margin-left: 20px;
-}
-
-.user-info a {
+.item-view a {
   color: #111;
   text-decoration: none;
 }
 
-.user-info a:hover {
+.item-view a:hover {
   color: #f0b90b;
   text-decoration: underline;
 }
