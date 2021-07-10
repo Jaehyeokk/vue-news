@@ -1,8 +1,10 @@
 <template>
   <div class="list-item">
     <div class="container">
+      <h2 class="list-title">{{ $route.name.toUpperCase() }}</h2>
       <ul class="hacker-list">
         <li v-for="item in list" :key="item.title" class="hacker-list-item">
+          <span class="point">{{ item.points || 0 }}</span>
           <template v-if="item.domain">
             <a :href="item.url" target="_blank">{{ item.title }}</a>
           </template>
@@ -42,13 +44,26 @@ export default {
   box-sizing: border-box;
 }
 
+.list-title {
+  font-weight: 700;
+  font-size: 27px;
+  padding-bottom: 20px;
+}
+
 .hacker-list {
   border-top: 1px solid #f0b90b;
 }
 
 .hacker-list-item {
-  padding: 10px;
+  padding: 16px 6px;
   border-bottom: 1px solid #f0b90b;
+}
+
+.hacker-list-item .point {
+  padding: 0 20px 0 10px;
+  font-weight: 500;
+  font-size: 16px;
+  color: #927106;
 }
 
 .hacker-list-item a {
