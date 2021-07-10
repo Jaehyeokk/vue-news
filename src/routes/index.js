@@ -1,4 +1,6 @@
 import Vue from "vue";
+import bus from "../util/bus.js";
+import { store } from "../store/index.js";
 import VueRouter from "vue-router";
 import NewsView from "../views/NewsView.vue";
 import JobsView from "../views/JobsView.vue";
@@ -19,16 +21,49 @@ export const router = new VueRouter({
       path: "/news",
       name: "news",
       component: NewsView,
+      beforeEnter(to, from, next) {
+        bus.$emit("start:spinner");
+        store
+          .dispatch("FETCH_LIST", to.name)
+          .then(() => {
+            next();
+          })
+          .catch((e) => {
+            console.log(e);
+          });
+      },
     },
     {
       path: "/jobs",
       name: "jobs",
       component: JobsView,
+      beforeEnter(to, from, next) {
+        bus.$emit("start:spinner");
+        store
+          .dispatch("FETCH_LIST", to.name)
+          .then(() => {
+            next();
+          })
+          .catch((e) => {
+            console.log(e);
+          });
+      },
     },
     {
       path: "/ask",
       name: "ask",
       component: AskView,
+      beforeEnter(to, from, next) {
+        bus.$emit("start:spinner");
+        store
+          .dispatch("FETCH_LIST", to.name)
+          .then(() => {
+            next();
+          })
+          .catch((e) => {
+            console.log(e);
+          });
+      },
     },
     {
       path: "/user/:id",
