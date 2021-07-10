@@ -15,6 +15,7 @@
 </template>
 
 <script>
+import bus from "../util/bus.js";
 import { mapState } from "vuex";
 import UserProfile from "../components/UserProfile.vue";
 export default {
@@ -25,7 +26,11 @@ export default {
     ...mapState(["user_info"]),
   },
   created() {
-    this.$store.dispatch("FETCH_USER_INFO", this.$route.params.id);
+    bus.$emit("start:spinner");
+    this.$store
+      .dispatch("FETCH_USER_INFO", this.$route.params.id)
+      .then(() => bus.$emit("stop:spinner"))
+      .catch((e) => console.log(e));
   },
 };
 </script>

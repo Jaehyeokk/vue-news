@@ -23,6 +23,7 @@
 </template>
 
 <script>
+import bus from "../util/bus.js";
 import UserProfile from "../components/UserProfile.vue";
 import { mapState } from "vuex";
 export default {
@@ -33,7 +34,11 @@ export default {
     ...mapState(["ask_item"]),
   },
   created() {
-    this.$store.dispatch("FETCH_ASK_ITEM", this.$route.params.id);
+    bus.$emit("start:spinner");
+    this.$store
+      .dispatch("FETCH_ASK_ITEM", this.$route.params.id)
+      .then(() => bus.$emit("stop:spinner"))
+      .catch((e) => console.log(e));
   },
 };
 </script>
