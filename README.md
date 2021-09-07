@@ -1,24 +1,17 @@
-# vue-news
+# News web
 
-## Project setup
-```
-npm install
-```
+## 🔗 Demo
 
-### Compiles and hot-reloads for development
-```
-npm run serve
-```
+[News web link](jaehyeokk.github.io/vue-news/)
 
-### Compiles and minifies for production
-```
-npm run build
-```
+## 🔨 Stack
 
-### Lints and fixes files
-```
-npm run lint
-```
+<img src="https://img.shields.io/badge/Vue-35495E?style=for-the-badge&logo=vuedotjs&logoColor=4FC08D" /> <img src="https://img.shields.io/badge/JavaScript-323330?style=for-the-badge&logo=javascript&logoColor=F7DF1E" /> 
 
-### Customize configuration
-See [Configuration Reference](https://cli.vuejs.org/config/).
+## 🎁 Packages
+
+✔️ Vuex
+
+✔️ Vue-Router
+
+✔️ Axios
