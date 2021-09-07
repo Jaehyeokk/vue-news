@@ -2,7 +2,7 @@
 
 ## 🔗 Demo
 
-[News web link](jaehyeokk.github.io/vue-news/)
+[News web link](https://jaehyeokk.github.io/vue-news/)
 
 ## 🔨 Stack
 
