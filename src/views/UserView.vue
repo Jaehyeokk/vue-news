@@ -15,9 +15,9 @@
 </template>
 
 <script>
-import bus from '../util/bus.js';
+import bus from '@/util/bus.js';
 import { mapState } from 'vuex';
-import UserProfile from '../components/UserProfile.vue';
+import UserProfile from '@/components/UserProfile.vue';
 export default {
 	components: {
 		UserProfile,

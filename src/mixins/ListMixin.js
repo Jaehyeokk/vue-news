@@ -1,7 +1,7 @@
-import bus from "../util/bus.js";
+import bus from '@/util/bus.js';
 
 export default {
-  mounted() {
-    bus.$emit("stop:spinner");
-  },
+	mounted() {
+		bus.$emit('stop:spinner');
+	},
 };

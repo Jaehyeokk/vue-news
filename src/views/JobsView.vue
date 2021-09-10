@@ -1,17 +1,17 @@
 <template>
-  <div class="jobs-view">
-    <HackerList></HackerList>
-  </div>
+	<div class="jobs-view">
+		<HackerList></HackerList>
+	</div>
 </template>
 
 <script>
-import ListMixin from "../mixins/ListMixin";
-import HackerList from "../components/HackerList.vue";
+import ListMixin from '@/mixins/ListMixin';
+import HackerList from '@/components/HackerList.vue';
 export default {
-  components: {
-    HackerList,
-  },
-  mixins: [ListMixin],
+	components: {
+		HackerList,
+	},
+	mixins: [ListMixin],
 };
 </script>
 
