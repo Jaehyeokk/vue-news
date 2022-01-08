@@ -37,7 +37,6 @@ export default {
 
 <style scoped>
 .container {
-	width: 1080px;
 	padding: 20px;
 	box-sizing: border-box;
 }
@@ -47,11 +46,5 @@ export default {
 	margin-top: 30px;
 	border: 1px solid #333;
 	line-height: 1.3;
-}
-
-@media screen and (max-width: 1080px) {
-	.container {
-		width: 100%;
-	}
 }
 </style>
