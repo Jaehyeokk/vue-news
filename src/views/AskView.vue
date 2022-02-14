@@ -4,15 +4,16 @@
 	</div>
 </template>
 
-<script>
+<script lang="ts">
+import Vue from 'vue';
 import HackerList from '@/components/HackerList.vue';
-import ListMixin from '@/mixins/ListMixin.js';
-export default {
+import ListMixin from '@/mixins/ListMixin';
+
+export default Vue.extend({
 	components: {
 		HackerList,
 	},
-	mixins: [ListMixin],
-};
-</script>
 
-<style></style>
+	mixins: [ListMixin],
+});
+</script>

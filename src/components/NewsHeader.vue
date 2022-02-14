@@ -2,26 +2,18 @@
 	<div class="news-header">
 		<div class="container">
 			<h1 class="logo">
-				<router-link to="/">
-					Hacker News
-				</router-link>
+				<router-link to="/"> Hacker News </router-link>
 			</h1>
 			<nav class="main-menu">
 				<ul class="main-menu-list">
 					<li class="main-menu-item">
-						<router-link to="/news">
-							News
-						</router-link>
+						<router-link to="/news"> News </router-link>
 					</li>
 					<li class="main-menu-item">
-						<router-link to="/jobs">
-							Jobs
-						</router-link>
+						<router-link to="/jobs"> Jobs </router-link>
 					</li>
 					<li class="main-menu-item">
-						<router-link to="/ask">
-							Ask
-						</router-link>
+						<router-link to="/ask"> Ask </router-link>
 					</li>
 				</ul>
 			</nav>
@@ -35,38 +27,35 @@
 			</button>
 			<ul class="mobile-menu-list">
 				<li class="mobile-menu-item">
-					<router-link to="/news">
-						News
-					</router-link>
+					<router-link to="/news"> News </router-link>
 				</li>
 				<li class="mobile-menu-item">
-					<router-link to="/jobs">
-						Jobs
-					</router-link>
+					<router-link to="/jobs"> Jobs </router-link>
 				</li>
 				<li class="mobile-menu-item">
-					<router-link to="/ask">
-						Ask
-					</router-link>
+					<router-link to="/ask"> Ask </router-link>
 				</li>
 			</ul>
 		</div>
 	</div>
 </template>
 
-<script>
-export default {
+<script lang="ts">
+import Vue from 'vue';
+
+export default Vue.extend({
 	data() {
 		return {
 			mobile_nav: false,
 		};
 	},
+
 	methods: {
 		openMobileNav() {
 			this.mobile_nav = !this.mobile_nav;
 		},
 	},
-};
+});
 </script>
 
 <style scoped>

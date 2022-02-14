@@ -14,25 +14,29 @@
 	</div>
 </template>
 
-<script>
-import bus from '@/util/bus.js';
+<script lang="ts">
+import Vue from 'vue';
+import bus from '@/util/bus';
 import { mapState } from 'vuex';
 import UserProfile from '@/components/UserProfile.vue';
-export default {
+
+export default Vue.extend({
 	components: {
 		UserProfile,
 	},
+
 	computed: {
 		...mapState(['user_info']),
 	},
+
 	created() {
 		bus.$emit('start:spinner');
 		this.$store
 			.dispatch('FETCH_USER_INFO', this.$route.params.id)
 			.then(() => bus.$emit('stop:spinner'))
-			.catch(e => console.log(e));
+			.catch((e: any) => console.log(e));
 	},
-};
+});
 </script>
 
 <style scoped>
