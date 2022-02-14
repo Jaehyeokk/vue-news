@@ -1,6 +1,6 @@
 ## 🔗 Demo
 
-[<img src="src/assets/images/mockup-news.png" alt="데모 사이트 바로가기" target="_blank">](https://jaehyeokk.github.io/vue-news/)
+[<img src="src/assets/images/mockup-news.png" alt="데모 사이트 바로가기">](https://jaehyeokk.github.io/vue-news/)
 
 <br />
 
